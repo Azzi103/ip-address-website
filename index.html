@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Získejte svou IP adresu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vaše IP adresa je:</h1>
+        <p id="ip"></p>
+    </div>
+
+    <script>
+        // Používáme veřejné API pro získání IP adresy
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip').textContent = data.ip;
+            })
+            .catch(error => {
+                document.getElementById('ip').textContent = 'Nepodařilo se získat IP adresu.';
+            });
+    </script>
+</body>
+</html>
